@@ -13,8 +13,16 @@ public class BbsDTO {
 	private String id; //작성자 아이디(member테이블 참조)
 	private java.sql.Date postDate; //작성일
 	private String visitcount; //조회수
+	//멤버변수 추가 : board와 member테이블의 join을 위해 name컬럼 추가
+	private String name;
 	
 	//getter/setter
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public String getNum() {
 		return num;
 	}

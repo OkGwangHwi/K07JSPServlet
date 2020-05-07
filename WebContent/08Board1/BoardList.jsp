@@ -6,7 +6,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-//한글깨짐처피리 - 검색폼에서 입력된 한글이 전송되기때문
+//한글깨짐처리 - 검색폼에서 입력된 한글이 전송되기때문
 request.setCharacterEncoding("UTF-8");
 
 //web.xml에 저장된 컨텍스트 초기화 파라미터를 application객체를 통해 가져옴
@@ -31,7 +31,7 @@ if(searchWord != null){
 	param.put("Word",searchWord);
 }
 
-//bbs테이블에 입력된 전체 레코드 갯수를 카운트하여 반환받음
+//board테이블에 입력된 전체 레코드 갯수를 카운트하여 반환받음
 int totalRecordCount = dao.getTotalRecordCount(param);
 
 //조건에 맞는 레코드를 select하여 결과셋을 List컬렉션으로 반환받음
@@ -122,7 +122,7 @@ dao.close();
 						<%=vNum %>
 					</td>
 					<td>
-						<a href="BoardView.jsp?idx=<%=dto.getNum() %>">
+						<a href="BoardView.jsp?num=<%=dto.getNum() %>">
 							<%=dto.getTitle() %>
 						</a>
 					</td>
