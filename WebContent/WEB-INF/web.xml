@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <display-name>K07JSPServlet</display-name>
-  
+
  <!-- 
   JDBC사용을 위한 "컨텍스트 초기화 파라미터"를 설정
    해당 설정값은 웹어플리케이션 모든 JSP혹은 서블릿에서
@@ -14,6 +14,20 @@
  <context-param>
  	<param-name>ConnectionURL</param-name>
  	<param-value>jdbc:oracle:thin:@localhost:1521:orcl</param-value>
+ </context-param>
+ 
+ <!-- 
+	게시판 페이지처리(Paging) 관련 파라미터
+	PAGE_SIZE : 한페이지에 출력할 게시물의 갯수. 보통 10~30정도로 설정한다.
+	BLOCK_PAGE : 한 블록당 출력할 페이지번호의 갯수. 보통 5~10정도로 설정한다.
+ -->
+  <context-param>
+ 	<param-name>PAGE_SIZE</param-name>
+ 	<param-value>10</param-value>
+ </context-param>
+  <context-param>
+ 	<param-name>BLOCK_PAGE</param-name>
+ 	<param-value>5</param-value>
  </context-param>
  
  
