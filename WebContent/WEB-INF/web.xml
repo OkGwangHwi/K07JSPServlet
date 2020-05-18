@@ -144,14 +144,61 @@
  	<!-- 요청명을 기술함 -->
  	<url-pattern>/DataRoom/DataList</url-pattern>
  </servlet-mapping>
-
-
-
-
-
-
-
-
+ 
+<!-- 자료실 글쓰기 -->
+<servlet>
+ 	<servlet-name>DataRoomWrite</servlet-name>
+ 	<!-- 요청명과 매핑되는 서블릿 클래스명 기술(패키지를 반드시 포함해야함) -->
+ 	<servlet-class>controller.WriteCtrl</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ 	<!-- 해당 요청이 들어왔을때 호출할 서블릿의 이름을 지정 -->
+ 	<servlet-name>DataRoomWrite</servlet-name>
+ 	<!-- 요청명을 기술함 -->
+ 	<url-pattern>/DataRoom/DataWrite</url-pattern>
+ </servlet-mapping>
+ 
+ 
+<!-- 자료실 상세보기 -->
+<servlet>
+ 	<servlet-name>DataRoomView</servlet-name>
+ 	<!-- 요청명과 매핑되는 서블릿 클래스명 기술(패키지를 반드시 포함해야함) -->
+ 	<servlet-class>controller.ViewCtrl</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ 	<!-- 해당 요청이 들어왔을때 호출할 서블릿의 이름을 지정 -->
+ 	<servlet-name>DataRoomView</servlet-name>
+ 	<!-- 요청명을 기술함 -->
+ 	<url-pattern>/DataRoom/DataView</url-pattern>
+ </servlet-mapping>
+ 
+ 
+<!-- 수정/삭제 진입하기전 패스워드 검증폼-->
+<servlet>
+ 	<servlet-name>DataRoomPassword</servlet-name>
+ 	<!-- 요청명과 매핑되는 서블릿 클래스명 기술(패키지를 반드시 포함해야함) -->
+ 	<servlet-class>controller.PasswordCtrl</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ 	<!-- 해당 요청이 들어왔을때 호출할 서블릿의 이름을 지정 -->
+ 	<servlet-name>DataRoomPassword</servlet-name>
+ 	<!-- 요청명을 기술함 -->
+ 	<url-pattern>/DataRoom/DataPassword</url-pattern>
+ </servlet-mapping>
+ 
+ 
+<!--  -->
+<servlet>
+ 	<servlet-name>DataRoomDataDelete</servlet-name>
+ 	<!-- 요청명과 매핑되는 서블릿 클래스명 기술(패키지를 반드시 포함해야함) -->
+ 	<servlet-class>controller.DeleteCtrl</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ 	<!-- 해당 요청이 들어왔을때 호출할 서블릿의 이름을 지정 -->
+ 	<servlet-name>DataRoomDataDelete</servlet-name>
+ 	<!-- 요청명을 기술함 -->
+ 	<url-pattern>/DataRoom/DataDelete</url-pattern>
+ </servlet-mapping>
 
 
 

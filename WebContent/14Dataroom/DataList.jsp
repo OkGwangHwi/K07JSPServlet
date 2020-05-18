@@ -83,8 +83,8 @@
 					</a>
 				</td>
 				<td class="text-center">${row.name }</td>
-				<td class="text-center">${row.visitcount }</td>
 				<td class="text-center">${row.postdate }</td>
+				<td class="text-center">${row.visitcount }</td>
 				<td class="text-center">
 					<c:if test="${not empty row.attachedfile }">
 						<a href="./Download?filename=${row.attachedfile }&idx=${row.idx }">
