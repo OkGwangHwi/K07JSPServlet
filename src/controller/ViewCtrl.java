@@ -13,6 +13,12 @@ public class ViewCtrl extends HttpServlet{
 	서블릿이 요청을 받을때 doGet(),doPost()로 받아서 처리하지만
 	service()메소드는 위 두가지 방식의 요청을 동시에 받을 수 있다.
 	 */
+	/*
+	 HttpServletRequest : 사용자의 정보를 서블릿엔진에 전달하는 객체
+	 	JSP에서 requset객체와 같은 역할.
+	 HttpServletResponse : 서버에서 응답으로 만들어진 정보를 암호화 하여 
+	 	사용자에게 전달
+	 */
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {

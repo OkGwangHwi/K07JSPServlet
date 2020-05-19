@@ -2,11 +2,11 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <display-name>K07JSPServlet</display-name>
 
- <!-- 
-  JDBC사용을 위한 "컨텍스트 초기화 파라미터"를 설정
-   해당 설정값은 웹어플리케이션 모든 JSP혹은 서블릿에서
-   접근가능.
-   -->
+<!-- 
+	JDBC사용을 위한 "컨텍스트 초기화 파라미터"를 설정
+	해당 설정값은 웹어플리케이션 모든 JSP혹은 서블릿에서
+	접근가능.
+-->
  <context-param>
  	<param-name>JDBCDriver</param-name>
  	<param-value>oracle.jdbc.OracleDriver</param-value>
@@ -187,7 +187,7 @@
  </servlet-mapping>
  
  
-<!--  -->
+<!-- 삭제처리 -->
 <servlet>
  	<servlet-name>DataRoomDataDelete</servlet-name>
  	<!-- 요청명과 매핑되는 서블릿 클래스명 기술(패키지를 반드시 포함해야함) -->
@@ -198,6 +198,34 @@
  	<servlet-name>DataRoomDataDelete</servlet-name>
  	<!-- 요청명을 기술함 -->
  	<url-pattern>/DataRoom/DataDelete</url-pattern>
+ </servlet-mapping>
+ 
+ 
+<!-- 자료실 수정 -->
+<servlet>
+ 	<servlet-name>DataRoomDataEdit</servlet-name>
+ 	<!-- 요청명과 매핑되는 서블릿 클래스명 기술(패키지를 반드시 포함해야함) -->
+ 	<servlet-class>controller.EditCtrl</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ 	<!-- 해당 요청이 들어왔을때 호출할 서블릿의 이름을 지정 -->
+ 	<servlet-name>DataRoomDataEdit</servlet-name>
+ 	<!-- 요청명을 기술함 -->
+ 	<url-pattern>/DataRoom/DataEdit</url-pattern>
+ </servlet-mapping>
+ 
+ 
+<!-- 파일 다운로드 -->
+<servlet>
+ 	<servlet-name>DataRoomDataDownload</servlet-name>
+ 	<!-- 요청명과 매핑되는 서블릿 클래스명 기술(패키지를 반드시 포함해야함) -->
+ 	<servlet-class>controller.DownloadCtrl</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ 	<!-- 해당 요청이 들어왔을때 호출할 서블릿의 이름을 지정 -->
+ 	<servlet-name>DataRoomDataDownload</servlet-name>
+ 	<!-- 요청명을 기술함 -->
+ 	<url-pattern>/DataRoom/Download</url-pattern>
  </servlet-mapping>
 
 
