@@ -17,7 +17,7 @@ import javax.websocket.server.ServerEndpoint;
 public class ChatServer02 {
 	
 	/*
-	 -해당 set컬렉션은 클라이언트가 접솔할때마다 세션ID를 저장하므로
+	 -해당 set컬렉션은 클라이언트가 접속할때마다 세션ID를 저장하므로
 	 static으로 선언된다.
 	 -접속한 웹브라우저가 웹소켓을 지원해야하며, 웹브라우저를 닫으면
 	 OnClose가 호출된다.
