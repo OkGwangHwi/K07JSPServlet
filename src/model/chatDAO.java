@@ -19,19 +19,38 @@ public class chatDAO {
 	PreparedStatement psmt;
 	ResultSet rs;
 	
-	public chatDAO() {
+	public chatDAO(String driver,String url) {
 		try {
-			Context initCtx = new InitialContext();
-			/*Context ctx = (Context)initCtx.lookup("java:comp/env");
-			DataSource source = (DataSource)ctx.lookup("jdbc/myoracle");*/
-			//위2번의 lookup을 아래 1번으로 병합할 수 있다.
-			DataSource source = (DataSource)initCtx.lookup("java:comp/env/jdbc/myoracle");
-			
-			con = source.getConnection();
-			System.out.println("DBCP연결성공");
+		Class.forName(driver);
+		String id = "kosmo";
+		String pw = "1234";
+		con = DriverManager.getConnection(url,id,pw);
+		System.out.println("DB연결성공");
 		}
 		catch(Exception e) {
-			System.out.println("DBCP연결실패");
+			e.printStackTrace();
+		}
+	}
+	
+	//인자생성자2
+	/*
+	 JSP에서는 application내장객체를 파라미터로 전달하고
+	 생성자에서는 web.xml에 직접 접근한다. application내장객체는
+	 javax.servlet.ServletContext타입으로 정의되었으므로
+	 메소드에서 사용시에는 해당 타입으로 받아야한다.
+	 ※각 내장객체의 타입은 JSP교안 "04.내장객체" 참조할것
+	 */
+	public chatDAO(ServletContext ctx) {
+		try {
+			Class.forName(ctx.getInitParameter("JDBCDriver"));
+			String id = "kosmo";
+			String pw = "1234";
+			con = DriverManager.getConnection(
+					ctx.getInitParameter("ConnectionURL"),id,pw);
+			System.out.println("DB 연결성공");
+		}
+		catch(Exception e) {
+			System.out.println("DB 연결실패");
 			e.printStackTrace();
 		}
 	}
@@ -53,11 +72,6 @@ public class chatDAO {
 		
 		//기본쿼리문
 		String query = "SELECT * FROM board ";
-		
-		//검색어가 있는경우 조건절 동적 추가
-		if(map.get("Word") != null) {
-			query += " WHERE "+ map.get("Column")+" "+" LIKE '%"+map.get("Word")+"%'";
-		}
 		
 		//최근게시물이 항상 위로 노출되야 하므로 작성된 순서의 역순으로 정렬한다.
 		query +=" ORDER BY num DESC";
@@ -85,6 +99,27 @@ public class chatDAO {
 			e.printStackTrace();
 		}
 		return bbs;
+	}
+	
+	//접속자 아이디 저장
+	public int insertId(chatDTO dto) {
+		int affected = 0;
+		try {
+			String query = "INSERT INTO chat_id ( "
+					+ " id) "
+					+ " VALUES ( "
+					+ " ?)";
+			
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, dto.getId());
+			
+			affected = psmt.executeUpdate();
+		}
+		catch(Exception e) {
+			System.out.println("insert중 예외발생");
+			e.printStackTrace();
+		}
+		return affected;
 	}
 	
 	public int sendMsg(chatDTO dto) {

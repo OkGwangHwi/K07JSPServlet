@@ -16,14 +16,14 @@
 			id.focus();
 			return; 
 		}
-		window.open("chatting03.jsp?chat_id="+id.value, 
-				"",
-				"width=500,height=700");
+		
 		id.value="";
 	}
 	</script>
+	<form name="idFrm" method="post" action="InsertId.jsp">
 	<h2>웹소켓03 - 아이디 적용해서 채팅창 띄워주기</h2>
 	아이디 : <input type="text" id="chat_id" />
 	<button type="button" onclick="chatWin03();">채팅창열기</button>
+	</form>
 </body>
 </html>

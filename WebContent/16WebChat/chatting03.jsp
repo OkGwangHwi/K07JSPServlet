@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>chatting02.jsp</title>
+<title>chatting03.jsp</title>
 </head>
 <body>
 <!-- 웹브라우저에 접속한 클라이언트의 세션아이디를 저장한다. 차후
