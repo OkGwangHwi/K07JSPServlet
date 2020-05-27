@@ -22,8 +22,6 @@ queryStr += "&nowPage="+nowPage;
 String num = request.getParameter("num");
 BbsDAO dao = new BbsDAO(application);
 
-
-
 //게시물의 조회수 +1증가
 dao.updateVisitCount(num);
 

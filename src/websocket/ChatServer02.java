@@ -32,6 +32,7 @@ public class ChatServer02 {
 	public void onOpen(Session session) {
 		
 		//Set컬렉션에 사용자 세션 아이디를 추가한다.
+		
 		clients.add(session);
 		
 		System.out.println("연결되었습니다...");

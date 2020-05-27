@@ -1,6 +1,26 @@
+<%@page import="java.util.Map"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="model.chatDTO"%>
+<%@page import="model.chatDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+//한글깨짐처리 - 검색폼에서 입력된 한글이 전송되기때문
+request.setCharacterEncoding("UTF-8");
+
+String msg = request.getParameter("inputMessage");
+
+
+chatDTO dto = new chatDTO();
+dto.setMsg(msg);
+
+
+chatDAO dao = new chatDAO(application);
+dao.sendMsg(dto);
+
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,12 +30,12 @@
 <body>
 <!-- 웹브라우저에 접속한 클라이언트의 세션아이디를 저장한다. 차후
 회원제 웹어플리케이션에서는 회원아이디 혹은 대화명으로 대체한다. -->
-<input type="text" id="chat_id" value="${param.chat_id }"	 
+<input type="text" id="chat_id" value="<%=dto.getId() %>"	 
 	style="border:1px dotted red; width:200px;" />
 <fieldset style="width:350px; text-align:center;">
 	<legend>채팅창</legend>	
 	<!-- 대화입력창 -->	
-	<input type="text" id="inputMessage" style="width:300px; margin-bottom:5px;"/>
+	<input type="text" name="inputMessage" style="width:300px; margin-bottom:5px;"/>
 	<br />
 	<input type="button" onclick="sendMessage();" value="보내기"/>
 	<input type="button" onclick="disconnect();" value="채팅종료"/>	

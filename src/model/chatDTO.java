@@ -1,5 +1,7 @@
 package model;
 
+import java.sql.Date;
+
 public class chatDTO {
 
 	//멤버변수

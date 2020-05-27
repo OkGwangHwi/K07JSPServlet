@@ -14,16 +14,15 @@
 		if(id.value==""){
 			alert("닉네임을 입력후 채팅창을 열어주세요");
 			id.focus();
-			return; 
+			return false; 
 		}
-		
 		id.value="";
 	}
 	</script>
-	<form name="idFrm" method="post" action="InsertId.jsp">
+	<form name="idFrm" method="post" action="InsertId.jsp" onsubmit="return chatWin03(this);">
 	<h2>웹소켓03 - 아이디 적용해서 채팅창 띄워주기</h2>
-	아이디 : <input type="text" id="chat_id" />
-	<button type="button" onclick="chatWin03();">채팅창열기</button>
+	아이디 : <input type="text" name="chat_id" />
+	<button type="submit" onclick="chatWin03();">채팅창열기</button>
 	</form>
 </body>
 </html>

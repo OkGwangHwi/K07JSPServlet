@@ -69,7 +69,6 @@ param.put("end",end);
 //조건에 맞는 레코드를 select하여 결과셋을 List컬렉션으로 반환받음
 List<BbsDTO> bbs = dao.selectListPage(param);
 
-
 //DB자원해제
 dao.close();
 %>
@@ -203,9 +202,14 @@ dao.close();
 			<div class="row mt-3">
 				<div class="col">
 					<!-- 페이지번호 부분 -->
-					<%=PagingUtil.pagingImg(totalRecordCount, 
-							pageSize, blockPage, nowPage, "BoardList.jsp?"+queryStr) %>
-					<!-- <ul class="pagination justify-content-center">
+					
+					<%-- <%=PagingUtil.pagingImg(totalRecordCount, 
+							pageSize, blockPage, nowPage, "BoardList.jsp?"+queryStr) %> --%>
+							
+					<ul class='pagination justify-content-center'>
+						<%=PagingUtil.pagingBS4(totalRecordCount,pageSize, blockPage, nowPage,"BoardList.jsp?"+queryStr) %>
+					</ul>
+					<!-- 
 						<li class="page-item"><a href="#" class="page-link"><i class="fas fa-angle-double-left"></i></a></li>
 						<li class="page-item"><a href="#" class="page-link"><i class="fas fa-angle-left"></i></a></li>
 						<li class="page-item"><a href="#" class="page-link">1</a></li>		
@@ -215,7 +219,7 @@ dao.close();
 						<li class="page-item"><a href="#" class="page-link">5</a></li>
 						<li class="page-item"><a href="#" class="page-link"><i class="fas fa-angle-right"></i></a></li>
 						<li class="page-item"><a href="#" class="page-link"><i class="fas fa-angle-double-right"></i></a></li>
-					</ul> -->
+					 -->
 				</div>				
 			</div>		
 		</div>

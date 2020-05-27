@@ -8,10 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
 import javax.servlet.ServletContext;
-import javax.sql.DataSource;
 
 public class chatDAO {
 
@@ -67,39 +64,6 @@ public class chatDAO {
 		}
 	}
 	
-	public List<BbsDTO> selectList(Map<String, Object> map){
-		List<BbsDTO> bbs = new Vector<BbsDTO>();
-		
-		//기본쿼리문
-		String query = "SELECT * FROM board ";
-		
-		//최근게시물이 항상 위로 노출되야 하므로 작성된 순서의 역순으로 정렬한다.
-		query +=" ORDER BY num DESC";
-		try {
-			psmt = con.prepareStatement(query);
-			rs = psmt.executeQuery();
-			//오라클이 반환해준 ResultSet의 갯수만큼 반복한다.
-			while(rs.next()) {
-				//하나의 레코드를 DTO객체에 저장하기 위해 새로운 객체생성
-				BbsDTO dto = new BbsDTO();
-				//setter()메소드를 사용하여 컬럼에 데이터 저장
-				dto.setNum(rs.getString(1));
-				dto.setTitle(rs.getString("title"));
-				dto.setContent(rs.getString(3));
-				dto.setPostDate(rs.getDate("postdate"));
-				dto.setId(rs.getString("id"));
-				dto.setVisitcount(rs.getString(6));
-				
-				//저장된 DTO객체를 List컬렉션에 추가
-				bbs.add(dto);
-			}
-		}
-		catch(Exception e) {
-			System.out.println("Select시 예외발생");
-			e.printStackTrace();
-		}
-		return bbs;
-	}
 	
 	//접속자 아이디 저장
 	public int insertId(chatDTO dto) {
